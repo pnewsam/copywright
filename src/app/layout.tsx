@@ -1,7 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Epilogue } from "next/font/google";
-import { Navbar } from "./components/Navbar";
+import { Toaster } from "@/components/ui/toaster";
+import { Navbar } from "@/components/Navbar";
 
 const epilogue = Epilogue({ subsets: ["latin"] });
 
@@ -19,7 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={epilogue.className}>
         <Navbar />
-        {children}
+        <main>{children}</main>
+        <Toaster />
       </body>
     </html>
   );
