@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Epilogue } from "next/font/google";
+import { Epilogue } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { Navbar } from "@/components/Navbar";
 
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={epilogue.className}>
         <Navbar />
-        <main>{children}</main>
+        <main className="max-w-[960px] w-full mx-auto px-4">{children}</main>
         <Toaster />
       </body>
     </html>
