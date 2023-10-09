@@ -2,16 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { useCompletion } from "ai/react";
+import { Check } from "lucide-react";
+import Markdown from "react-markdown";
 import { useSearchParams } from "next/navigation";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useCopyToClipboard } from "usehooks-ts";
 import { useToast } from "./ui/use-toast";
+import { Button } from "./ui/button";
+import { Copy } from "lucide-react";
 
 type Props = {
   endpoint: string;
@@ -24,6 +22,8 @@ export const ResponseFragment = ({ endpoint, title, description }: Props) => {
   const prompt = searchParams.get("prompt") as string;
 
   const [isFinished, setIsFinished] = useState(false);
+  const [value, copy] = useCopyToClipboard();
+  const [isCopied, setIsCopied] = useState(false);
   const { toast } = useToast();
 
   const { complete, completion, isLoading } = useCompletion({
@@ -53,23 +53,75 @@ export const ResponseFragment = ({ endpoint, title, description }: Props) => {
     }
   }, [complete, prompt, isFinished]);
 
+  const handleCopy = () => {
+    setIsCopied(true);
+    copy(completion);
+    toast({
+      title: "Success!",
+      description: "Copied raw markdown to clipboard.",
+    });
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  };
+
   if (!prompt) return <>No prompt provided</>;
 
   return (
-    <Card>
-      <CardHeader className="bg-stone-50 flex flex-row justify-between">
-        <div>
-          <CardTitle>{title}</CardTitle>
-          <CardDescription>{description}</CardDescription>
-        </div>
-        <div>{isLoading ? <>Generating...</> : <>Complete</>}</div>
-      </CardHeader>
-      {isLoading && (
-        <CardContent>
-          <Skeleton className="w-full h-4 mb-4" />
-        </CardContent>
-      )}
-      {completion && <CardContent>{completion}</CardContent>}
-    </Card>
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 bg-neutral-100 border border-neutral-200 rounded mb-4 p-4">
+      <div>
+        <h2 className="text-2xl tracking-tight font-semibold text-stone-800">
+          {title}
+        </h2>
+        <p className="text-neutral-500">{description}</p>
+      </div>
+      <div>
+        <Tabs defaultValue="preview">
+          <TabsList>
+            <TabsTrigger value="preview">Preview</TabsTrigger>
+            <TabsTrigger value="markdown">Raw Markdown</TabsTrigger>
+          </TabsList>
+          <TabsContent
+            value="preview"
+            className="bg-white relative rounded px-8 py-6"
+          >
+            <Button
+              size="sm"
+              variant="outline"
+              className="absolute -top-12 right-0 text-xs gap-2"
+              disabled={true}
+            >
+              Copy
+            </Button>
+            <Markdown className="prose max-w-none">{completion}</Markdown>
+          </TabsContent>
+          <TabsContent
+            value="markdown"
+            className="bg-white relative rounded px-8 py-6"
+          >
+            <Button
+              size="sm"
+              variant="outline"
+              className="absolute -top-12 right-0 text-xs gap-1 items-center"
+              disabled={isLoading}
+              onClick={handleCopy}
+            >
+              {isCopied ? (
+                <>
+                  <span className="text-green-500">Copied!</span>
+                  <Check className="w-4 h-4 -translate-y-[1px] text-green-500" />
+                </>
+              ) : (
+                <>
+                  <span>Copy Markdown</span>
+                  <Copy className="w-4 h-4 ml-1" />
+                </>
+              )}
+            </Button>
+            <div className="font-mono">{completion}</div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
   );
 };

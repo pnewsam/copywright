@@ -22,6 +22,7 @@ export async function POST(req: Request) {
         content: `The following is a description of a product or service.
         Given the description, please generate headline text for a landing page.
         There should be two short headings, one main heading and one sub-heading.
+        Please format the response in Markdown.
         Description content: ${prompt}
         Output:\n`,
       },

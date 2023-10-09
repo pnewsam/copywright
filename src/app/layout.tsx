@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={epilogue.className}>
         <Navbar />
-        <main className="max-w-[960px] w-full mx-auto px-4">{children}</main>
+        <main className="max-w-[1280px] w-full mx-auto px-4">{children}</main>
         <Toaster />
       </body>
     </html>

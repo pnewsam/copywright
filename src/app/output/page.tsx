@@ -14,9 +14,11 @@ export default function OutputPage() {
           title="Features"
           description="A list of features for your product."
         />
-        {/* <h4>Pricing</h4>
-        <h4>Testimonials</h4>
-        <h4>Frequenty Asked Questions</h4> */}
+        <ResponseFragment
+          endpoint={"/api/landing/pricing"}
+          title="Pricing"
+          description="A list of pricing options for your product."
+        />
       </div>
     </div>
   );

@@ -20,9 +20,9 @@ export async function POST(req: Request) {
       {
         role: "user",
         content: `The following is a description of a product or service.
-        Given the description, please generate marketing copy text describing the feature offerings in greater detail.
-        There should be between three to six different features.
-        Each feature should have a few bullet points underneath.
+        Given the description, please generate marketing copy text describing the various pricings for the product or service.
+        There should be between three different pricing options.
+        Each one should have a few bullet points underneath.
         Please format the response in Markdown.
         Description content: ${prompt}
         Output:\n`,
