@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(epilogue.className, "bg-neutral-100")}>
+      <body className={cn(epilogue.className, "bg-stone-100")}>
         <Navbar />
         <main className="max-w-[1280px] w-full mx-auto px-4">{children}</main>
         <Toaster />

@@ -9,10 +9,10 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="mb-16 pt-8 mr-8">
-              <h1 className="text-5xl font-bold text-neutral-800 tracking-tight leading-tight mb-4">
+              <h1 className="text-5xl font-bold text-stone-800 tracking-tight leading-tight mb-4">
                 Marketing copy for your landing page.
               </h1>
-              <h2 className="text-3xl font-bold text-neutral-800 tracking-tight leading-tight mb-12">
+              <h2 className="text-3xl font-bold text-stone-800 tracking-tight leading-tight mb-12">
                 With just a few clicks.
               </h2>
               <PromptInput />

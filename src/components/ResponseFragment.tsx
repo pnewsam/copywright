@@ -68,12 +68,12 @@ export const ResponseFragment = ({ endpoint, title, description }: Props) => {
   if (!prompt) return <>No prompt provided</>;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 bg-neutral-100 mb-4">
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 bg-stone-100 mb-4">
       <div>
         <h2 className="text-2xl tracking-tight font-semibold text-stone-800">
           {title}
         </h2>
-        <p className="text-neutral-500">{description}</p>
+        <p className="text-stone-500">{description}</p>
       </div>
       <div>
         <Tabs defaultValue="preview">
