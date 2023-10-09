@@ -68,7 +68,7 @@ export const ResponseFragment = ({ endpoint, title, description }: Props) => {
   if (!prompt) return <>No prompt provided</>;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 bg-neutral-100 border border-neutral-200 rounded mb-4 p-4">
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 bg-neutral-100 mb-4">
       <div>
         <h2 className="text-2xl tracking-tight font-semibold text-stone-800">
           {title}
@@ -83,7 +83,7 @@ export const ResponseFragment = ({ endpoint, title, description }: Props) => {
           </TabsList>
           <TabsContent
             value="preview"
-            className="bg-white relative rounded px-8 py-6"
+            className="bg-white shadow-sm border border-stone-200 relative rounded-xl px-8 py-6"
           >
             <Button
               size="sm"
@@ -97,7 +97,7 @@ export const ResponseFragment = ({ endpoint, title, description }: Props) => {
           </TabsContent>
           <TabsContent
             value="markdown"
-            className="bg-white relative rounded px-8 py-6"
+            className="bg-white shadow-sm border border-stone-200 relative rounded-lg px-8 py-6"
           >
             <Button
               size="sm"

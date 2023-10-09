@@ -14,7 +14,7 @@ export const PromptInput = () => {
   return (
     <div>
       <Textarea
-        className="text-lg mb-4 px-6 py-4"
+        className="text-base mb-4 px-6 py-4 rounded-xl"
         placeholder="Enter a short description of your product."
         rows={2}
         value={prompt}
@@ -24,7 +24,7 @@ export const PromptInput = () => {
         href={`/output?prompt=${prompt}`}
         className={cn(
           buttonVariants({ variant: "default" }),
-          "gap-3 py-6 text-lg w-full"
+          "gap-3 py-6 text-lg w-full rounded-xl"
         )}
       >
         Generate

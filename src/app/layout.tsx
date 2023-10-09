@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Epilogue } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { cn } from "@/lib/utils";
 
 const epilogue = Epilogue({ subsets: ["latin"] });
 
@@ -18,10 +20,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={epilogue.className}>
+      <body className={cn(epilogue.className, "bg-neutral-100")}>
         <Navbar />
         <main className="max-w-[1280px] w-full mx-auto px-4">{children}</main>
         <Toaster />
+        <Footer />
       </body>
     </html>
   );
