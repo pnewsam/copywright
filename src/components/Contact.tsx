@@ -1,87 +1,58 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 export function Contact() {
+  const benefits = [
+    "Professional, conversion-focused copy",
+    "Quick turnaround times",
+    "Unlimited revisions",
+    "SEO optimization included",
+    "30-day money-back guarantee",
+  ];
+
   return (
-    <section className="w-full py-24 bg-white">
+    <section className="w-full py-24 bg-stone-50">
       <div className="container px-4 md:px-6 mx-auto max-w-6xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-          Get in Touch
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <Mail className="w-6 h-6 mr-4 text-stone-600" />
-                <p>info@copywritingpro.com</p>
-              </div>
-              <div className="flex items-center">
-                <Phone className="w-6 h-6 mr-4 text-stone-600" />
-                <p>+1 (555) 123-4567</p>
-              </div>
-              <div className="flex items-center">
-                <MapPin className="w-6 h-6 mr-4 text-stone-600" />
-                <p>123 Copywriting Lane, Word City, TX 12345</p>
-              </div>
+        <div className="flex flex-col items-center text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Boost Your Conversions?
+          </h2>
+          <p className="text-xl text-stone-600 mb-12 max-w-2xl">
+            Get professional copywriting that drives results. Our words convert
+            visitors into customers, guaranteed.
+          </p>
+          <div className="bg-white border border-stone-200 p-8 mb-12 w-full max-w-2xl">
+            <h3 className="text-2xl font-bold mb-6">What You'll Get:</h3>
+            <ul className="space-y-4 text-left mb-8">
+              {benefits.map((benefit, index) => (
+                <li key={index} className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-green-500 mr-2 flex-shrink-0" />
+                  <span>{benefit}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="text-3xl font-bold mb-8">
+              $499{" "}
+              <span className="text-xl font-normal text-stone-600">
+                / project
+              </span>
             </div>
-            <div className="mt-12">
-              <h3 className="text-2xl font-semibold mb-6">Office Hours</h3>
-              <p className="mb-2">Monday - Friday: 9am - 5pm EST</p>
-              <p>Saturday - Sunday: Closed</p>
-            </div>
+            <Button
+              className="w-full bg-black text-white hover:bg-stone-800 text-lg py-6 rounded-none"
+              onClick={() => {
+                // Here you would typically integrate with Stripe
+                console.log("Initiating Stripe checkout");
+              }}
+            >
+              Get Started Now
+            </Button>
           </div>
-          <div>
-            <h3 className="text-2xl font-semibold mb-6">Send Us a Message</h3>
-            <form className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block mb-2 text-sm font-medium text-stone-900"
-                >
-                  Name
-                </label>
-                <Input
-                  id="name"
-                  placeholder="Your Name"
-                  className="w-full px-3 py-2 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-black"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-stone-900"
-                >
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="you@example.com"
-                  className="w-full px-3 py-2 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-black"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block mb-2 text-sm font-medium text-stone-900"
-                >
-                  Message
-                </label>
-                <Textarea
-                  id="message"
-                  placeholder="Your message here..."
-                  className="w-full px-3 py-2 border border-stone-300 rounded-none focus:outline-none focus:ring-2 focus:ring-black"
-                  rows={4}
-                />
-              </div>
-              <Button className="w-full bg-black text-white hover:bg-stone-800 rounded-none">
-                Send Message
-              </Button>
-            </form>
-          </div>
+          <p className="text-sm text-stone-500">
+            By clicking "Get Started Now", you agree to our Terms of Service and
+            Privacy Policy.
+          </p>
         </div>
       </div>
     </section>
