@@ -35,7 +35,7 @@ export function Testimonials() {
               key={index}
               className="bg-white border border-stone-200 p-8 transition-all duration-300 hover:border-stone-400"
             >
-              <p className="text-lg mb-6">"{testimonial.quote}"</p>
+              <p className="text-lg mb-6">&quot;{testimonial.quote}&quot;</p>
               <div className="border-t border-stone-200 pt-4">
                 <p className="font-semibold">{testimonial.author}</p>
                 <p className="text-stone-600">{testimonial.position}</p>

@@ -24,7 +24,7 @@ export function Contact() {
             visitors into customers, guaranteed.
           </p>
           <div className="bg-white border border-stone-200 p-8 mb-12 w-full max-w-2xl">
-            <h3 className="text-2xl font-bold mb-6">What You'll Get:</h3>
+            <h3 className="text-2xl font-bold mb-6">What You&apos;ll Get:</h3>
             <ul className="space-y-4 text-left mb-8">
               {benefits.map((benefit, index) => (
                 <li key={index} className="flex items-start">
@@ -50,8 +50,8 @@ export function Contact() {
             </Button>
           </div>
           <p className="text-sm text-stone-500">
-            By clicking "Get Started Now", you agree to our Terms of Service and
-            Privacy Policy.
+            By clicking &quot;Get Started Now&quot;, you agree to our Terms of
+            Service and Privacy Policy.
           </p>
         </div>
       </div>
